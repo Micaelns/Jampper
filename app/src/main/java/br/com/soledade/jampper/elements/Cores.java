@@ -13,4 +13,10 @@ public class Cores {
         vermelho.setColor(0XFFFF0000);
         return vermelho;
     }
+
+    public static Paint getCorDoCano() {
+        Paint verde = new Paint();
+        verde.setColor(0XFF00FF00);
+        return verde;
+    }
 }

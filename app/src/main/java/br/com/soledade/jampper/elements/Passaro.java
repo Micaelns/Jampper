@@ -13,10 +13,12 @@ public class Passaro {
     private static final int RAIO=50;
 
     private static final Paint vermelho =Cores.getCorDoPassaro();
+    private Tela tela;
 
     private int altura;
 
-    public Passaro(){
+    public Passaro(Tela tela){
+        this.tela=tela;
         this.altura=100;
     }
 
@@ -25,10 +27,17 @@ public class Passaro {
     }
 
     public void cai() {
-        this.altura+=5;
+        boolean chegouNoChao = this.altura + RAIO > tela.getAltura();
+
+        if (!chegouNoChao){
+            this.altura += 5;
+        }
     }
 
     public void pula() {
-        this.altura-=150;
+        //por definição o topo da tela vale 0
+        if(altura - RAIO > 0) {
+            this.altura -= 150;
+        }
     }
 }

@@ -10,6 +10,8 @@ import android.view.SurfaceView;
 import android.view.View;
 
 import br.com.soledade.jampper.R;
+import br.com.soledade.jampper.elements.Cano;
+import br.com.soledade.jampper.elements.Canos;
 import br.com.soledade.jampper.elements.Passaro;
 import br.com.soledade.jampper.elements.Tela;
 
@@ -20,8 +22,10 @@ import br.com.soledade.jampper.elements.Tela;
 public class Game extends SurfaceView implements Runnable, View.OnTouchListener {
 
     private boolean isRunning=true;
+    private Canos canos;
     private Passaro passaro;
     private Tela tela;
+
     final SurfaceHolder holder =getHolder();
     private Bitmap backgroud;
 
@@ -42,13 +46,15 @@ public class Game extends SurfaceView implements Runnable, View.OnTouchListener 
             canvas.drawBitmap(backgroud,0,0,null);
             passaro.desenhaNo(canvas);
             passaro.cai();
-
+            canos.desenhaNo(canvas);
+            canos.move();
             holder.unlockCanvasAndPost(canvas);
         }
     }
 
     private void inicializaElementos() {
-        this.passaro = new Passaro();
+        this.passaro = new Passaro(this.tela);
+        this.canos=new Canos(this.tela);
         Bitmap back = BitmapFactory.decodeResource(getResources(), R.drawable.background);
         backgroud = Bitmap.createScaledBitmap(back, this.tela.getLargura(),this.tela.getAltura(),false);
     }
