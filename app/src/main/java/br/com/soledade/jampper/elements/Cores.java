@@ -1,6 +1,7 @@
 package br.com.soledade.jampper.elements;
 
 import android.graphics.Paint;
+import android.graphics.Typeface;
 
 /**
  * Created by soledade on 20/06/17.
@@ -18,5 +19,14 @@ public class Cores {
         Paint verde = new Paint();
         verde.setColor(0XFF00FF00);
         return verde;
+    }
+
+    public static Paint getCorDaPontuacao() {
+        Paint branco = new Paint();
+        branco.setColor(0XFFFFFFFF);
+        branco.setTextSize(80);
+        branco.setTypeface(Typeface.DEFAULT_BOLD);
+        branco.setShadowLayer(3,5,5,0XFF000000);
+        return branco;
     }
 }
