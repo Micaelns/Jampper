@@ -52,4 +52,13 @@ public class Cano {
     public int getPosicao() {
         return posicao;
     }
+
+    public boolean temColisaoHorizontalCom(Passaro passaro) {
+        return this.getPosicao()< Passaro.X + Passaro.RAIO;
+    }
+
+    public boolean temColisaoVerticalCom(Passaro passaro) {
+        return passaro.getAltura()-Passaro.RAIO < this.alturaDoCanoSuperior
+                || passaro.getAltura()+Passaro.RAIO > this.alturaDoCanoInferior;
+    }
 }
